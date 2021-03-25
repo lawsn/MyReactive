@@ -1,6 +1,5 @@
 package doo.myreactive.boot.embedredis;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.connection.ReactiveRedisConnectionFactory;
 import org.springframework.data.redis.core.ReactiveRedisOperations;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -15,7 +14,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-//@Service
+@Service
 public class BasicService {
 
     private final ReactiveRedisConnectionFactory factory;
@@ -34,11 +33,11 @@ public class BasicService {
 
     void loadData() {
         List<String> data = new ArrayList<>();
-        IntStream.range(0, 100000).forEach(i -> data.add(UUID.randomUUID().toString()));
+        IntStream.range(0, 50).forEach(i -> data.add(UUID.randomUUID().toString()));
 
         Flux<String> stringFlux = Flux.fromIterable(data);
 
-        factory.getReactiveClusterConnection()
+        factory.getReactiveConnection()
                 .serverCommands()
                 .flushAll()
                 .thenMany(stringFlux

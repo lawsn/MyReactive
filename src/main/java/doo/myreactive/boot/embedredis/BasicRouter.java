@@ -8,7 +8,7 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
-//@Configuration
+@Configuration
 public class BasicRouter {
 
     private final BasicService basicService;
@@ -20,7 +20,7 @@ public class BasicRouter {
     @Bean
     RouterFunction<ServerResponse> empRouterList() {
         return route()
-                .GET("/rective-list", serverRequest -> ServerResponse.ok().contentType(MediaType.TEXT_EVENT_STREAM).body(basicService.findReactorList(), String.class))
+                .GET("/reactive-list", serverRequest -> ServerResponse.ok().contentType(MediaType.TEXT_EVENT_STREAM).body(basicService.findReactorList(), String.class))
                 .GET("/normal-list", serverRequest -> ServerResponse.ok().contentType(MediaType.TEXT_EVENT_STREAM).body(basicService.findNormalList(), String.class))
                 .GET("/load", serverRequest -> {
                     basicService.loadData();
