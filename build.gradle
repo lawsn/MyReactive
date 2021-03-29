@@ -25,11 +25,14 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'junit:junit:4.12'
+    implementation 'org.projectlombok:lombok:1.18.18'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.projectreactor:reactor-test'
+    testImplementation 'org.projectlombok:lombok:1.18.18'
 
     compileOnly 'org.projectlombok:lombok:1.18.18'
+    testCompile 'org.projectlombok:lombok:1.18.18'
     annotationProcessor 'org.projectlombok:lombok:1.18.18'
 }
 

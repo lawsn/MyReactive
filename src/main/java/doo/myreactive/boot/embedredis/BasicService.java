@@ -1,5 +1,6 @@
 package doo.myreactive.boot.embedredis;
 
+import doo.myreactive.boot.nosql.Person;
 import org.springframework.data.redis.connection.ReactiveRedisConnectionFactory;
 import org.springframework.data.redis.core.ReactiveRedisOperations;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -58,4 +59,5 @@ public class BasicService {
                 .map(key -> stringStringRedisTemplate.opsForValue().get(key))
                 .collect(Collectors.toList()));
     }
+
 }

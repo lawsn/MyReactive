@@ -1,5 +1,6 @@
 package doo.myreactive.boot.nosql;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.ReactiveRedisOperations;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,7 +13,7 @@ public class PersonController {
 
     private ReactiveRedisOperations<String, Person> personOps;
 
-    public PersonController(ReactiveRedisOperations<String, Person> personOps) {
+    public PersonController(@Qualifier("personReactiveRedisOperations") ReactiveRedisOperations<String, Person> personOps) {
         this.personOps = personOps;
     }
 
